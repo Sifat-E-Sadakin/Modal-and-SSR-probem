@@ -3,8 +3,13 @@
 import { BackToHome } from "@/components/backToHome/backToHome";
 import { useUserAgentContext } from "@/components/providers/userAgentProvider";
 
-export const UserAgent = () => {
-  const { userAgent } = useUserAgentContext();
+interface UserAgentProps {
+  userAgent: string;
+}
+
+export const UserAgent = ({ userAgent: initialUserAgent }: UserAgentProps) => {
+  const { userAgent: contextUserAgent } = useUserAgentContext();
+  const userAgent = contextUserAgent || initialUserAgent;
 
   return (
     <div>
